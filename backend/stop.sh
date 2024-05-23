@@ -1,11 +1,7 @@
 #!/bin/bash
-
-#Find the Gunicorn process ID
-PID=$(ps aux | grep 'gunicorn' | grep 'wsgi:app'| awk '{print $2}')
-
-if [-n "$PID"]; then
-    kill -9 $PID
-    echo "Server stopped."
-else
-    echo "Server is not running."
-fi 
+set -e
+NAME='goalder-backend-service'
+echo -n "Stopping daemon: $NAME\n"
+kill -9 `sudo lsof -t -i:5000` &
+echo -n "Stopped daemon: $NAME\n"
+exit
