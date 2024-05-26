@@ -2,7 +2,7 @@ import os
 from flask import Blueprint, jsonify,render_template,url_for,flash,redirect,request
 from flask_login import login_user,current_user,logout_user, login_required
 
-from ..db import DBManager
+from ..db_manager import DBManager
 from ..models.user import User
 
 user_bp = Blueprint('user_controller',__name__,url_prefix='/user')
