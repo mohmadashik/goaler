@@ -3,7 +3,7 @@ import pytz
 from flask_login import UserMixin
 
 from .. import login_manager 
-from ..db import DBManager
+from ..db_manager import DBManager
 
 db_manager = DBManager()
 db = db_manager.get_db()
