@@ -5,25 +5,30 @@ import traceback
 from flask import Flask
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_migrate import Migrate 
+from flask_cors import CORS 
 
 from .config.sql_config import Config
 
-from .db import DBManager
+from .db_manager import DBManager
 
 bcrypt = Bcrypt()
 login_manager = LoginManager()
+migrate = Migrate()
 
 def create_app():
     try:
         # global login_manager,bcrypt
 
         app = Flask(__name__)
+        CORS(app)
+
         app.config.from_object(Config)
 
         db_manager = DBManager()
         db = db_manager.get_db()
         db.init_app(app)
-
+        migrate.init_app(app,db)
         bcrypt.init_app(app)
 
         login_manager = LoginManager(app)
