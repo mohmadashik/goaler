@@ -3,6 +3,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import api_req from './services/AxiosConfig';
 import { useNavigate } from 'react-router-dom';
 import { Container,Box } from '@mui/material';
 
@@ -20,7 +21,7 @@ const Login = () => {
     }),
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        const response = await axios.post('http://localhost:5000/user/login', values);
+        const response = await api_req.post('http://localhost:5000/user/login', values);
         if (response.status === 200) {
           // Handle login success, e.g., save token, redirect
           // navigate('/home');
