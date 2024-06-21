@@ -45,7 +45,7 @@ def login():
             next_page = request.args.get('next')
             return jsonify({'message':'Login successful'}),200
         else:
-            return jsonify({'message':'Login unsuccessful. Check email and password'}), 401
+            return jsonify({'message':'Login unsuccessful. Check username and password'}), 401
 
 @user_bp.route("/logout")
 def logout():

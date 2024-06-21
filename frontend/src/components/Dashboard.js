@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api_req from './services/AxiosConfig';
 
 const Dashboard = () => {
   const [animate, setAnimate] = useState(false);
@@ -18,7 +19,8 @@ const Dashboard = () => {
   const handleLogout = async(event) =>{
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/user/logout');
+      const response = await api_req.get('http://localhost:5000/user/logout');
+      console.log('logout response :',response)
       if (response.status==200)
         {
           navigate('/home');
