@@ -1,30 +1,22 @@
 // src/App.js
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import './App.css';
-import Home from './Home';
-import Login from './Login';
-
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+const App = () => {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/login">Login</Link></li>
-            </ul>
-          </nav>
-          <Routes>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-          </Routes>
-        </header>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="dashboard" element={<Dashboard/>} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;

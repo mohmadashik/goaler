@@ -21,7 +21,7 @@ def create_app():
         # global login_manager,bcrypt
 
         app = Flask(__name__)
-        CORS(app)
+        CORS(app,supports_credentials=True)
 
         app.config.from_object(Config)
 
